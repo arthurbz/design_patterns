@@ -1,7 +1,10 @@
 package abstractfactory;
 
 public class StreetFactory extends AbstractFactory {
-
+	/*
+	 * The StreetFactory is in charge of
+	 * creating the right Street object for X or Y
+	 */
 	@Override
 	Vehicle getVehicle(String model) {
 		if (model.equalsIgnoreCase("X")) {
