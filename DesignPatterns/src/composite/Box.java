@@ -3,8 +3,10 @@ package composite;
 import java.util.List;
 
 public class Box implements Item {
-	// Lista para armazenar refer�ncias aos subelementos. 
-	// Armazena tanto Folha como Cont�iner, por isso deve ser declarado com um tipo de interface Componente.
+	/*
+	 * List to store elements references
+	 * Must be declared as an interface
+	 */
 	private List<Item> items;
 	
 	public Box(List<Item> itens) {
@@ -18,10 +20,12 @@ public class Box implements Item {
 	public void removeItem(Item item) {
 		this.items.remove(item);
 	}
-
-	// Percorre recursivamente todos os filhos, coletando e somando seus resultados. 
-	// Como os filhos do Cont�iner passam essas chamadas para seus pr�prios filhos e assim em diante, 
-	// toda a �rvore de objetos � percorrida como resultado.
+	
+	/*
+	 * Recursively collects and sum all results
+	 * Goes through the whole objects tree, as the Container
+	 * sends the request to each child  
+	 */
 	@Override
 	public double calculatePrice() {
 		double finalPrice = 0;
