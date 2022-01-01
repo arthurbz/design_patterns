@@ -29,6 +29,13 @@ import mediator.ChatRoom;
 import mediator.ChatUser;
 import mediator.IChatRoom;
 import mediator.User;
+import memento.History;
+import memento.Originator;
+import prototype.EmployeeRecord;
+import proxy.College;
+import proxy.CollegeProxy;
+import visitor.ConcreteElement;
+import visitor.ConcreteVistor;
 
 public class DesignPatternCaller {
 
@@ -161,24 +168,88 @@ public class DesignPatternCaller {
         chatroom.addUser(user3);
         chatroom.addUser(user4);
 
-        
         user1.send("Top of the morning", "2");
         user2.send("Hey buddy", "1");
 	}
 	
+	/*Memento*/
 	public static void memento() {
 		System.out.println("Memento Design Pattern\n");
+
+		Originator originator = new Originator();
+	    History history = new History();
+	    
+	    originator.setState("State #1");
+	    
+	    originator.setState("State #2");
+	    history.saveState(originator.generateMemento());
+	    
+	    originator.setState("State #3");
+	    history.saveState(originator.generateMemento());
+	    
+	    originator.setState("State #4");
+	    System.out.println("Current State: " + originator.getState());		
+	    
+	    originator.setStateFromMemento(history.getState(0));
+	    System.out.println("First saved State ----- " + originator.getState());
+	    
+	    originator.setStateFromMemento(history.getState(1));
+	    System.out.println("Second saved State ----- " + originator.getState());
 	}
 	
+	/*Prototype*/
 	public static void prototype() {
 		System.out.println("Prototype\n");
+        int eid = 123; //Integer.parseInt(br.readLine());  
+        System.out.print("\n");  
+          
+        //System.out.print("Enter Employee Name: ");  
+        String ename = "Elliot"; //br.readLine();  
+        System.out.print("\n");  
+          
+        //System.out.print("Enter Employee Designation: ");  
+        String edesignation = "Security team"; //br.readLine();  
+        System.out.print("\n");  
+          
+        //System.out.print("Enter Employee Address: ");  
+        String eaddress = "Church Ave, Brookly, NY 11226"; //br.readLine();  
+        System.out.print("\n");  
+          
+        //System.out.print("Enter Employee Salary: ");  
+        double esalary = 999999.99; //Double.parseDouble(br.readLine());  
+        System.out.print("\n");  
+           
+        EmployeeRecord e1 = new EmployeeRecord(eid, ename, edesignation, esalary, eaddress);  
+          
+        e1.showRecord();  
+        System.out.println("\n");  
+        EmployeeRecord e2 = (EmployeeRecord) e1.getClone();  
+        e2.showRecord(); 
 	}
 	
+	/*Proxy*/
 	public static void proxy() {
 		System.out.println("Proxy Design Pattern\n");
+		
+        College college = new CollegeProxy("Wrong");
+        System.out.println("Incorrect Login");
+        System.out.println(college.getCollegeName());
+        System.out.println(college.getCourseName());
+        System.out.println("");
+        System.out.println("----------------------------");
+        System.out.println("");
+        college = new CollegeProxy("OK");
+        System.out.println("Correct Login");
+        System.out.println(college.getCollegeName());
+        System.out.println(college.getCourseName());
 	}
 	
+	/*Visitor*/
 	public static void visitor() {
 		System.out.println("Visitor Design Pattern\n");
+		
+		ConcreteElement concreteElement = new ConcreteElement();
+		ConcreteVistor concreteVisitor = new ConcreteVistor();
+		concreteElement.accept(concreteVisitor);
 	}
 }
