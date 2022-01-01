@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Otherwise, it creates a new one
  */
 
-class PlayerFactory {
+public class PlayerFactory {
 	/* The HashMap stores the instances of player (CT or T) */
     private static HashMap <String, Player> hm = new HashMap<String, Player>();
 
