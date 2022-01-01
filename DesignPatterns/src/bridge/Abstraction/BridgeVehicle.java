@@ -2,11 +2,11 @@ package bridge.Abstraction;
 
 import bridge.Implementation.Transport;
 
-public abstract class Vehicle {
+public abstract class BridgeVehicle {
     protected Transport transport;
     protected String brand;
 
-    protected Vehicle(String brand, Transport transporte){
+    protected BridgeVehicle(String brand, Transport transporte){
         this.transport = transporte;
         this.brand = brand;
     }

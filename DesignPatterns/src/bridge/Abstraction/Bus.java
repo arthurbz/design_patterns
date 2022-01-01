@@ -2,7 +2,7 @@ package bridge.Abstraction;
 
 import bridge.Implementation.Transport;
 
-public class Bus extends Vehicle {
+public class Bus extends BridgeVehicle {
 
 	public Bus(String brand, Transport transport) {
         super(brand, transport);
