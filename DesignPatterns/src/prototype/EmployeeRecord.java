@@ -1,6 +1,6 @@
 package prototype;
 
-class EmployeeRecord implements Prototype{  
+public class EmployeeRecord implements Prototype{  
       
    private int id;  
    private String name, designation;  
@@ -14,7 +14,7 @@ class EmployeeRecord implements Prototype{
       
 }  
   
- public  EmployeeRecord(int id, String name, String designation, double salary, String address) {  
+   public EmployeeRecord(int id, String name, String designation, double salary, String address) {  
           
         this();  
         this.id = id;  
