@@ -6,7 +6,7 @@ public class StreetFactory extends AbstractFactory {
 	 * creating the right Street object for X or Y
 	 */
 	@Override
-	Vehicle getVehicle(String model) {
+	public Vehicle getVehicle(String model) {
 		if (model.equalsIgnoreCase("X")) {
 			return new XStreet();
 		} else if (model.equalsIgnoreCase("Y")) {
